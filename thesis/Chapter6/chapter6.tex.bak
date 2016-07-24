@@ -1,0 +1,100 @@
+\chapter{Application : RNS Based PN Sequence}
+Before beginning with spread spectrum system, we focus on to concept of spectrum. Every system that modulates or transmits a signal has two basic cardinals, namely the frequency at which the signal is centred and bandwidth of the signal when modulated. Spectrum gives the range of a signal; in communication and signal processing, the range of the signal is spoken in terms of frequencies covered by the signal. Thus by spectrum of a signal we mean frequency spectrum. The difference between the maximum frequency and minimum frequency of the signal in view is called bandwidth of the signal. As mentioned in chapter 4, any signal in time domain can also be presented in frequency domain and vice versa by various transform techniques. In spread spectrum we therefore just spread the spectrum i.e. a signal covering one or narrow band of frequencies are spread over a large band of frequencies, quite large in fact than frequency required to transmit signal consummately, hence converting a small bandwidth to a very large bandwidth.    
+\section{Introduction to Spread Spectrum Communication}
+The basis of spread spectrum technology is expressed Shannon in terms of channel capacity:
+\begin{equation}
+    C = \omega ~ log_{2}\left ( 1+\frac{S}{N} \right )
+\end{equation}
+
+where\\~~~~~ C is capacity in bps\\
+~~~~~~~~~~ $\omega$ is bandwidth in Hz\\
+~~~~~~~~~~ S is signal power\\
+~~~~~~~~~~ N is noise power \par
+
+\begin{figure}[ht]
+  \begin{center}
+    \subfigure[Bit to Transmit]{\label{fig:bitseq}\includegraphics[height=50mm]{bit.eps}}
+~~~~~~~~~
+    \subfigure[PN Sequence]{\label{fig:pnseq}\includegraphics[height=50mm]{pn.eps}}
+\\
+    \subfigure[Transmitted Symbol]{\label{fig:out}\includegraphics[height=50mm]{sym.eps}}
+    
+
+  \caption{Direct Sequence Spread Spectrum Bit Pattern}
+  \label{fig:trans}
+  \end{center}
+\end{figure}
+\par 
+
+Equation 6.1. limns the competency of a channel to transmit information devoid of any error compared to SNR in the channel and bandwidth used to transmit the information \cite{R54}. The bit duration is $T_{b}$ as in figure \ref{fig:bitseq}. The bit duration of the PN sequence is $T_{c}$ as in fig. \ref{fig:pnseq} and is called as chip period. Now when the bit is multiplied to the PN sequence, the output is in fig. \ref{fig:out} which also has a bit duration of $T_{c}$. Since $T_{b}~>>~T_{c}$, the frequency of the transmitted bit becomes very large compared to the signal. This is called Direct Sequence Spread Spectrum (DS-SS). Frequency hopping is also a concept widely used in spread spectrum communication. However this chapter only deals with DS-SS as frequency hopping is out of scope. 
+
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.5]{DSSS.eps}
+\caption{Direct Sequence CDMA Technique}
+\label{fig:dsst}
+\end{figure}
+
+DS-SS is primarily used in CDMA for multiple access. The structure of the spread DS-CDMA is portrayed in figure \ref{fig:dsst}. This is similar to MA-ACSK scheme except the fact that the spreading sequences used in the system are vectors generated based on residue arithmetic.The transmitter generates N no. of RNS based orthogonal PN sequences for N users. The details of the proposed RNS based PN sequence generator and comparison to standard DS-CDMA techniques are chalked out in the rest of the chapter.     
+
+\section{Proposed PN Sequence Algorithm}
+
+The proposed PN sequence is generated based on residue arithmetic. There is a key input to the generator along with the spread factor $\beta$.
+\begin{figure}[t]
+\centering
+\includegraphics[scale=0.5]{pnseqgen.eps}
+\caption{RNS Based PN Sequence Generator}
+\label{fig:pngen}
+\end{figure}
+The figure \ref{fig:pngen} shows the block diagram of the PN sequence generated. As depicted in the chapter 3, moduli set are selected either by consecutive method or exponential method. The input k in figure also known as spread factor $\beta$ is responsible for the no. of moduli to be generated. The bits of moduli set should be same as that of k. The keys in separate phase are selected such that the orthogonality of the output vector holds. The generated numbers in RNS are concatenated and converted into binary sequence of 1 and 0. This sequence is passed through the NRZ encoder to make a PN sequence of -1 and 1. This RNS based PN sequence generator is then used in DS-CDMA.
+
+\section{Standard PN Sequences}
+In this chapter, performance of the RNS based PN sequence is compared to Gold Code sequence and Kasami Code sequence. Gold Sequence was proposed by Robert Gold. These are constructed by EXOR-ing two m-sequences of the same length with each other. Thus, for a Gold sequence of length $m= 2^{l} -1$, one uses two LFSR, each of length $m= 2^{l} -1$. Choosing LFSRs appropriately, Gold sequences give better cross-correlation properties than maximum length LSFR sequences \cite{R57, R58}. Kasami sequences are binary sequences of length $2^{N}$ where N is an even integer. Kasami sequences have good cross-correlation values and approaches close the Welch lower bound. Kasami sequences commonly have two classes, namely the small set and the large set. The process of generating a Kasami sequence starts by generating a maximum length sequence x(n), where $n = 1,2\ldots 2^{N} -1$. Maximum length sequences are periodic sequences so a(n) is repeated periodically for N larger than $2^{N} -1$. Henceforth another sequence $x(n) = y(q.n)$ is generated where $q =2^{\frac{N}{2}}+1$. Kasami sequences are formed by adding x(n) and a time shifted version of y(n)modulo two. All sequences generated by different time shifts of y(n) plus the x(n) and y(n) sequence constitute the Kasami sequence. This set has $2^{\frac{N}{2}}$ different sequences.
+\section{Results}
+\begin{table}[ht]
+\centering
+\begin{tabular}{c c c c c c c}
+\hline
+Pn Seq & $PN_{1}$ & $PN_{2}$ & $PN_{3}$ &$PN_{4}$ & $PN_{5}$ & $PN_{6}$ \\
+\hline \hline
+$PN_{1}$ & 1 & 0.0691 & 0.0020 & 0.0796 & 0 &  0.1463 \\
+$PN_{2}$ & 0.0691 & 1 & 0.0544 & -0.0866 & 0.1411 & 0.0713\\
+$PN_{3}$ & 0.0020 & 0.0544 & 1 & 0.0023 & -0.0157 & -0.0577\\
+$PN_{4}$ & 0.0796 & -0.0866 & 0.0023 & 1 & 0.1459 & -0.2050\\
+$PN_{5}$ & 0 & 0.1411 & -0.0157 & 0.1459 & 1 & -0.0314\\
+$PN_{6} $ & 0.1463 & 0.0713 & -0.0577 & -0.2050 & -0.0314 & 1 \\  
+\hline \hline
+\end{tabular}
+\caption{Correlation Matrix for PN sequence with $\beta=128$}
+\label{tab:cor}
+\end{table}
+The table \ref{tab:cor} represents correlation matrix of six RNS based PN sequences generated from key matrix Q=[1536958 1536965 1235688 4321531 2315312 2447683]. The spread factor $\beta= 128$ and hence the generated moduli set P=[255 254 253 251 247 241 239 233 229 227 223 217 211 199 197 193].
+\begin{figure}[ht]
+\centering
+\includegraphics[scale=0.4]{CorrMatrix.eps}
+\caption{Correlation Matrix for 10 sequence generated by RNS based PN generator}
+\label{fig:cormat}
+\end{figure}
+
+\begin{figure}[ht]
+  \begin{center}
+    \subfigure[2 User]{\label{fig:UR2}\includegraphics[scale=0.4]{2userber_rns.eps}}\\
+    \subfigure[15 User]{\label{fig:U15R}\includegraphics[scale=0.4]{15userber_RNS.eps}}
+  \caption{BER plot for RNS based PN sequence for 2 and 15 User}
+  \label{fig:U2U15}
+  \end{center}
+\end{figure}
+\par 
+The figure \ref{fig:U2U15} shows the BER performance of the proposed sequence over a AWGN channel. 
+\section{Performance Comparison}
+\begin{figure}[ht]
+  \begin{center}
+    \subfigure[5 User]{\label{fig:U5}\includegraphics[scale=0.4]{5userber.eps}}\\
+    \subfigure[10 User]{\label{fig:U10}\includegraphics[scale=0.4]{10userber.eps}}
+  \caption{BER plot for RNS based PN sequence for 2 and 15 User}
+  \label{fig:U5U10}
+  \end{center}
+\end{figure}
+The figure \ref{fig:U5U10} shows the comparison between the performance of Gold sequence, Kasami sequence and RNS based PN sequence over a AWGN channel based on BER. The plots shows the nature of the PN sequences with increase in user. As the user increases the proposed PN sequence is not affected as much as Gold and Kasami Sequence.  All the simulations are done for spread factor $\beta=128$.
+\section{Summary}
+ The proposed PN sequence based on RNS has a low computational complexity and has a very high dynamic key range. Hence, the secured and authentic transmission is possible. The performance based on BER provides adequate data about the robustness of the technique.
