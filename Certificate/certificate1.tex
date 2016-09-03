@@ -1,0 +1,49 @@
+\documentclass[16pt]{article}
+\usepackage{amsmath}
+\usepackage{setspace} 
+\usepackage{graphicx}
+\usepackage{anysize}
+\usepackage{type1cm}
+\usepackage{eso-pic}
+\usepackage{color}
+\marginsize{0.6in}{0.6in}{1in}{1in} 
+\date{}
+\pagestyle{empty}
+\begin{document}
+\doublespacing
+\begin{figure}
+	\centering
+		\includegraphics[scale = 0.2]{logo.eps}
+	\label{fig:logo}
+\end{figure}
+\centering
+\textsc{\large National Institute of Technology}\\
+\textsc{\normalsize Rourkela}
+\vspace{1cm}
+\renewcommand{\abstractname}{\large CERTIFICATE}
+\makeatletter
+\AddToShipoutPicture{%
+            \setlength{\@tempdimb}{.17\paperwidth}%
+            \setlength{\@tempdimc}{.25\paperheight}%
+            \setlength{\unitlength}{1pt}%
+            \put(\strip@pt\@tempdimb,\strip@pt\@tempdimc){%
+            \centering
+\includegraphics[scale=0.9]{logo1.eps}            }%
+}
+\makeatother
+\begin{abstract}
+\vspace{1cm}
+
+{\large \quad  \quad   This is to certify that the thesis entitled, \textbf{``Application of Residue Arithmetic in Communication and Signal Processing "} submitted by \textbf{Pallab Maji} in partial fulfillment of the requirements for the award of Master of Technology Degree in \textbf{Electronics \& Communication Engineering} with specialization in \textbf{Telematics and Signal Processing} during 2010-2011 at the National Institute of Technology, Rourkela (Deemed University) is an authentic work carried out by him under my supervision and guidance. 
+
+ \quad  \quad To the best of my knowledge, the matter embodied in the thesis has not been submitted to any other University / Institute for the award of any Degree or Diploma.
+\vspace{2.5cm}
+\flushleft{\textbf{Date}}\hfill
+\raggedleft{\textbf{Prof. (Dr.) Girija Sankar Rath}\\
+Dept. of Electronics \& Communication Engg.\\
+National Institute of Technology \\
+Rourkela-769008\\
+Orissa, India}}
+\pagenumbering{}
+\end{abstract}
+\end{document}

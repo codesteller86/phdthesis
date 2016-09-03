@@ -1,0 +1,28 @@
+
+% Thesis Abstract -----------------------------------------------------
+
+
+%\begin{abstractslong}    %uncommenting this line, gives a different abstract heading
+\begin{abstracts}        %this creates the heading for the abstract page
+	
+	Soft computing techniques, unlike traditional deterministic logic based computing techniques, sometimes also called as hard computing, are tolerant of imprecision, uncertainty, and approximation. The primary inspiration for soft computing is the human mind and its ability to address day-to-day problems. The primary constituents of soft computing techniques are Artificial Neural Network, Fuzzy Logic Systems, and Evolutionary Computing.
+	
+	This thesis presents design and implementation of a generic hardware architecture based Type-I Mamdani fuzzy logic controller (FLC) implemented on a programmable device, which can be remotely configured in real-time over Ethernet. This reconfigurability is added as a feature to existing FLCs in literature. It enables users to change parameters (those drive the FLC systems) in real-time and eliminate repeated hardware programming whenever there is a need. Realization of these systems in real-time is  difficult as the computational complexity increases exponentially with an increase in the number of inputs. Hence challenge lies in reducing the Rulebase significantly such that the inference time and the throughput time is perceivable for real-time applications.
+	
+	To achieve these objectives, a modified thresholded fired rules hypercube (MT-FRHC) algorithm for Rulebase reduction is proposed and implemented. MT-FRHC reduces the useful rules without compromising system accuracy and improves the cycle time in terms of fuzzy logic operations per second (FzLOPS). It is imperative to understand that there are over sixty reconfigurable parameters, and it becomes an arduous task for a user to manage them. Therefore, a genetic algorithm based parameter extraction technique is proposed. This will help to develop a course tuning and provide default parameters that can be later fine tuned by the users remotely through the Web-based User Interface. A hardware software co-design architecture for FLC is developed on TI C6748 DSP hardware with Sys/BIOS RTOS and seamlessly integrated with a web-based user interface (WebUI) for reconfigurability.
+	
+	Fuzzy systems employ defuzzifier to convert the fuzzy output into the real world crisp output. Centroid of Area (CoA) method is most widely used defuzzification method for control applications. However, the prevalent method of CoA computation is based on the principle of Riemann sum which is computationally complex. A vertices based CoA (VBCoA) defuzzification method is introduced. It has been observed that the proposed VBCoA method for COA computation is faster than the Riemann sum based CoA computation.
+	
+	A code optimization technique, exclusive to TI DSPs, is implemented to achieve memory and machine cycle optimization. The WebUI is developed in accordance to a client--server model using ASP.NET. It acquires fuzzy parameters from users, and a server application is dedicated to handling data communication between the hardware and the server. Testing and analysis of this hardware G-FLCS has been carried out by using hardware-in-loop test to control various system models in Simulink environment which includes water level control in a two tank system, intelligent cruise control system, speed control of an armature controlled DC motor and anti-windup control. The performance of the proposed G-FLCS is compared to Fuzzy Inference System of Matlab Fuzzy Logic Toolbox and PID controller in terms of settling time, transient time and steady state error. This proposed MT-FRHC based G-FLCS with VBCoA defuzzification implemented on C6748 DSP was finally deployed to control the radial position of plasma in Aditya Tokamak fusion reactor. The proposed G-FLCS is observed to deliver a smooth and fast system response.
+	
+\end{abstracts}
+%\end{abstractlongs}
+
+
+% ----------------------------------------------------------------------
+
+
+%%% Local Variables:
+%%% mode: latex
+%%% TeX-master: "../thesis"
+%%% End:
